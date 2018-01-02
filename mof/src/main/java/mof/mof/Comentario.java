@@ -1,4 +1,4 @@
-package mof;
+package mof.mof;
 
 public class Comentario {
 	
