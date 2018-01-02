@@ -30,21 +30,21 @@ public class Comentario {
 	}*/
 	
 	public void comentar(){
-		conexion.conectar();
+		Conexion.conectar();
 		
 		try {
-			conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
+			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
 			
-		/*	conexion.setRs(conexion.getSt().executeQuery("SHOW TABLES"));
+			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			rs = st.executeQuery("SHOW TABLES");*/
+			//rs = st.executeQuery("SHOW TABLES");
 			
 		} catch (SQLException e){
 			System.out.println("Erro al conectar con la base de datos mof");
 		}
 		try {
-			while (conexion.getRs().next()) {
-				System.out.println(conexion.getRs().getString(1));
+			while (Conexion.getRs().next()) {
+				System.out.println(Conexion.getRs().getString(1));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
