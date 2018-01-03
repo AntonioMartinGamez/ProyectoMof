@@ -47,33 +47,8 @@ public class Restaurante {
 	//Metodo Borrar Restaurante
 	public void borrar() throws SQLException{
 		
-		/*Conexion.conectar();
-		
-		try {
-		
-			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
-			
+		Conexion.getSt().execute("DELETE * FROM restaurante WHERE idRest = '" + idRest + "'");
 
-			
-		} catch (SQLException e){
-			
-			System.out.println("Erro al conectar con la base de datos mof");
-			
-		}
-		try {
-			
-			while (Conexion.getRs().next()) {
-				
-				System.out.println(Conexion.getRs().getString(1));
-				
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		Conexion.cerrar();
-		*/
 		
 	}
 	
