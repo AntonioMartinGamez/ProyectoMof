@@ -45,7 +45,7 @@ public class Restaurante {
 	
 	
 	//Metodo Borrar Restaurante
-	public void borrar(){
+	public void borrar() throws SQLException{
 		
 		/*Conexion.conectar();
 		
