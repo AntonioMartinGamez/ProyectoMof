@@ -8,11 +8,24 @@ import java.time.LocalDate;
 
 public class Usuario {
 	
-	private String nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto;
-	private char sexo;
+	private String nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
 	private int telefono, edad;
 	LocalDate fechaNac;
 	
+	ResultSet nomUser;
+	ResultSet nom;
+	ResultSet app;
+	ResultSet tlf;
+	ResultSet eml;
+	ResultSet ed;
+	ResultSet sex;
+	ResultSet pas;
+	ResultSet fec;
+	ResultSet com;
+	ResultSet pro;
+	ResultSet loc;
+	ResultSet img;
+	ResultSet comment;
 
 	
 	public void registrar() throws SQLException {
@@ -27,18 +40,18 @@ public class Usuario {
 	public void modificar() throws SQLException {
 		Conexion.conectar();
 		
-		ResultSet nom = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet app = Conexion.getSt().executeQuery("Select apellido from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet tlf = Conexion.getSt().executeQuery("Select telefono from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet eml = Conexion.getSt().executeQuery("Select email from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet ed = Conexion.getSt().executeQuery("Select edad from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet sex = Conexion.getSt().executeQuery("Select sexo from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet pas = Conexion.getSt().executeQuery("Select password from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet fec = Conexion.getSt().executeQuery("Select fechaNac from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet com = Conexion.getSt().executeQuery("Select comAuton from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet pro = Conexion.getSt().executeQuery("Select provincia from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet loc = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet img = Conexion.getSt().executeQuery("Select foto from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		nom = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		app = Conexion.getSt().executeQuery("Select apellido from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		tlf = Conexion.getSt().executeQuery("Select telefono from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		eml = Conexion.getSt().executeQuery("Select email from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		ed = Conexion.getSt().executeQuery("Select edad from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		sex = Conexion.getSt().executeQuery("Select sexo from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		pas = Conexion.getSt().executeQuery("Select password from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		fec = Conexion.getSt().executeQuery("Select fechaNac from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		com = Conexion.getSt().executeQuery("Select comAuton from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		pro = Conexion.getSt().executeQuery("Select provincia from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		loc = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		img = Conexion.getSt().executeQuery("Select foto from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		
 				
 		Conexion.getSt().execute("UPDATE SET nombre= '" + nom + "', apellidos = '" + app + "', telefono = '" + tlf + "', email = '" + eml + "' , edad = '" + ed + "', sexo = '" + sex + "', password =  '" + pas + "', fechaNac =  '" + fec + "', comAuton = '" + com + "', provincia = '" + pro + "', localidad = '" + loc + "', foto = '" + img + "' WHERE nombreUsuario =  '" + nombreUsuario + "'");
@@ -70,8 +83,22 @@ public class Usuario {
 	public void mostUsuario() throws SQLException{
 		Conexion.conectar();
 		
-		Conexion.setRs(Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'"));
-	
+		nomUser = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		nom = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		app = Conexion.getSt().executeQuery("Select apellido from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		tlf = Conexion.getSt().executeQuery("Select telefono from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		eml = Conexion.getSt().executeQuery("Select email from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		ed = Conexion.getSt().executeQuery("Select edad from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		sex = Conexion.getSt().executeQuery("Select sexo from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		pas = Conexion.getSt().executeQuery("Select password from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		fec = Conexion.getSt().executeQuery("Select fechaNac from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		com = Conexion.getSt().executeQuery("Select comAuton from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		pro = Conexion.getSt().executeQuery("Select provincia from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		loc = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		img = Conexion.getSt().executeQuery("Select foto from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		comment = Conexion.getSt().executeQuery("SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario WHERE nombreUsuario = '" + nombreUsuario + "' LIMIT 0,10" );
+		
+		//Conexion.setRs(Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'"));
 		Conexion.cerrar();
 		
 	}
