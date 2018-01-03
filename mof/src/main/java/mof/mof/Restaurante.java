@@ -14,15 +14,20 @@ public class Restaurante {
 	//Metodo Registrar Restaurante
 	public void registro() throws SQLException{
 		
+		Conexion.conectar();
+		
 		Conexion.getSt().execute("INSERT INTO restaurante "
 				+ "(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
 				+ "VALUES ('" + nombre + "', '" + fijo + "', '" + movil + "', '"+ email + "', '" + descripcion + "', '" + propietario + "', '" + comida + "', '" + url + "', '" + localizacion + "', '" + precMedio + "', '" + foto + "')");
 		
+		Conexion.cerrar();	
 	}
 	
 	
 	//Metodo Modificar Restaurante
 	public void modificar() throws SQLException{
+		
+		Conexion.conectar();
 		
 		ResultSet nombre = Conexion.getSt().executeQuery("Select nombre from restaurante where idRest = '" + idRest + "'");
 		ResultSet fijo = Conexion.getSt().executeQuery("Select fijo from restaurante where idRest = '" + idRest + "'");
@@ -40,15 +45,19 @@ public class Restaurante {
 		Conexion.getSt().execute("UPDATE SET "
 				+ "nombre= '" + nombre + "', fijo = '" + fijo + "', movil = '" + movil + "', email = '" + email + "' , descripcion = '" + descripcion + "', propietario = '" + propietario + "', comida =  '" + comida + "', url =  '" + url + "', localizacion = '" + localizacion + "', precMedio = '" + precMedio + "', foto = '" + foto + "' "
 						+ "WHERE idRest =  '" + idRest + "'");
-						
+				
+		Conexion.cerrar();	
 	}
 	
 	
 	//Metodo Borrar Restaurante
 	public void borrar() throws SQLException{
 		
+		Conexion.conectar();
+		
 		Conexion.getSt().execute("DELETE * FROM restaurante WHERE idRest = '" + idRest + "'");
 
+		Conexion.cerrar();
 		
 	}
 	
@@ -56,8 +65,8 @@ public class Restaurante {
 	//Metodo Mostrar Restaurantes (fotos, 10 ultimas valoraciones, etc)
 	public void mostRest(){
 		
-		/*Conexion.conectar();
-		
+		Conexion.conectar();
+		/*
 		try {
 		
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
@@ -80,9 +89,9 @@ public class Restaurante {
 			
 			e.printStackTrace();
 		}
-		
-		Conexion.cerrar();
 		*/
+		Conexion.cerrar();
+		
 		
 	}
 	
