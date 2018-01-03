@@ -18,21 +18,23 @@ public class Restaurante {
 		Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
 			
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			//rs = st.executeQuery("SHOW TABLES");
-			
 		} catch (SQLException e){
+			
 			System.out.println("Erro al conectar con la base de datos mof");
+			
 		}
 		try {
+			
 			while (Conexion.getRs().next()) {
+				
 				System.out.println(Conexion.getRs().getString(1));
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		
@@ -42,53 +44,62 @@ public class Restaurante {
 	//Metodo Modificar Restaurante
 	public void modificar(){
 		
-		Conexion.conectar();
+		/*Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
-			
+		
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			//rs = st.executeQuery("SHOW TABLES");
+
 			
 		} catch (SQLException e){
+			
 			System.out.println("Erro al conectar con la base de datos mof");
+			
 		}
 		try {
+			
 			while (Conexion.getRs().next()) {
+				
 				System.out.println(Conexion.getRs().getString(1));
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 	
 	
 	//Metodo Borrar Restaurante
 	public void borrar(){
 		
-		Conexion.conectar();
+		/*Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
-			
+		
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			//rs = st.executeQuery("SHOW TABLES");
+
 			
 		} catch (SQLException e){
+			
 			System.out.println("Erro al conectar con la base de datos mof");
+			
 		}
 		try {
+			
 			while (Conexion.getRs().next()) {
+				
 				System.out.println(Conexion.getRs().getString(1));
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 	
@@ -96,26 +107,31 @@ public class Restaurante {
 	//Metodo Mostrar Restaurantes (fotos, 10 ultimas valoraciones, etc)
 	public void mostRest(){
 		
-		Conexion.conectar();
+		/*Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
-			
+		
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			//rs = st.executeQuery("SHOW TABLES");
+
 			
 		} catch (SQLException e){
+			
 			System.out.println("Erro al conectar con la base de datos mof");
+			
 		}
 		try {
+			
 			while (Conexion.getRs().next()) {
+				
 				System.out.println(Conexion.getRs().getString(1));
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 	
@@ -123,26 +139,31 @@ public class Restaurante {
 	//Metodo Responder a un comentario
 	public void responder(){
 		
-		Conexion.conectar();
+		/*Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
-			
+		
 			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
 			
-			//rs = st.executeQuery("SHOW TABLES");
+
 			
 		} catch (SQLException e){
+			
 			System.out.println("Erro al conectar con la base de datos mof");
+			
 		}
 		try {
+			
 			while (Conexion.getRs().next()) {
+				
 				System.out.println(Conexion.getRs().getString(1));
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 }
