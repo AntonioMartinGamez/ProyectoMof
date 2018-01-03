@@ -96,7 +96,7 @@ public class Usuario {
 		pro = Conexion.getSt().executeQuery("Select provincia from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		loc = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		img = Conexion.getSt().executeQuery("Select foto from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		comment = Conexion.getSt().executeQuery("SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario WHERE nombreUsuario = '" + nombreUsuario + "' LIMIT 0,10" );
+		comment = Conexion.getSt().executeQuery("SELECT restaurante.nombre, comentarios.valoracion FROM usuario INNER JOIN comentarios ON comentarios.idUsuario = usuario.idUsuario INNER JOIN restaurante ON comentarios.idRest = restaurante.idRest WHERE nombreUsuario = '" + nombreUsuario + "' ORDER BY fechaValor DESC LIMIT 0,10" );
 		
 		//Conexion.setRs(Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'"));
 		Conexion.cerrar();
