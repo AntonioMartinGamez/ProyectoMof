@@ -13,6 +13,5 @@ public class App
     	Comentario c = new Comentario();
     	c.comentar();
     	
-    	//System.out.println( "Hello World!" );
     }
 }
