@@ -62,7 +62,7 @@ public class Restaurante {
 	}
 	
 	
-	//Metodo Mostrar Restaurantes (fotos, 10 ultimas valoraciones, etc)
+	//Metodo Mostrar Restaurantes (fotos, 10 ultimos comentarios, media valoraciones, etc)
 	public void mostRest() throws SQLException{
 		
 		Conexion.conectar();
@@ -82,6 +82,7 @@ public class Restaurante {
 		Conexion.getSt().execute("SELECT "
 				+ "nombre= '" + nombre + "', fijo = '" + fijo + "', movil = '" + movil + "', email = '" + email + "' , descripcion = '" + descripcion + "', propietario = '" + propietario + "', comida =  '" + comida + "', url =  '" + url + "', localizacion = '" + localizacion + "', precMedio = '" + precMedio + "', foto = '" + foto + "' "
 						+ "WHERE idRest =  '" + idRest + "'");
+		Conexion.getSt().executeQuery("SELECT AVG(comentarios.valoracion) from comentarios inner join restaurante on comentarios.idRest = restaurante.idRest; ");
 
 		Conexion.cerrar();
 		
