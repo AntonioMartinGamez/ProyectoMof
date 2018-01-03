@@ -7,7 +7,12 @@ package mof.mof;
 public class App 
 {
     public static void main( String[] args )
+    
     {
-        System.out.println( "Hello World!" );
+    
+    	Comentario c = new Comentario();
+    	c.comentar();
+    	
+    	//System.out.println( "Hello World!" );
     }
 }

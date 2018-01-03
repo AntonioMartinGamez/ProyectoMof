@@ -8,8 +8,8 @@ public class Restaurante {
 	
 	
 	
-	private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
-	private int fijo, movil, precMedio;
+	//private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
+	//private int fijo, movil, precMedio;
 	
 	
 	//Metodo Registrar Restaurante
