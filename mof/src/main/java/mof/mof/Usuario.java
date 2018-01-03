@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class Usuario {
 	
-	private String nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
+	private String nombreUsuario = "usuarioChorra",nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
 	private int telefono, edad;
 	LocalDate fechaNac;
 	
@@ -36,7 +36,17 @@ public class Usuario {
 		Conexion.cerrar();
 		
 	}
+
 	
+	/*public Usuario() {
+		super();
+	}*/
+
+
+
+
+
+
 	public void modificar() throws SQLException {
 		Conexion.conectar();
 		
@@ -80,7 +90,7 @@ public class Usuario {
 		
 	}
 	
-	public void mostUsuario() throws SQLException{
+	public String mostUsuario() throws SQLException{
 		Conexion.conectar();
 		
 		nomUser = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
@@ -97,12 +107,12 @@ public class Usuario {
 		loc = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		img = Conexion.getSt().executeQuery("Select foto from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		nombreRes = Conexion.getSt().executeQuery("SELECT restaurante.nombre FROM usuario INNER JOIN comentarios ON comentarios.idUsuario = usuario.idUsuario INNER JOIN restaurante ON comentarios.idRest = restaurante.idRest WHERE nombreUsuario = '" + nombreUsuario + "'" );
-		
 		valoracion = Conexion.getSt().executeQuery("SELECT comentarios.valoracion FROM usuario INNER JOIN comentarios ON comentarios.idUsuario = usuario.idUsuario INNER JOIN restaurante ON comentarios.idRest = restaurante.idRest WHERE nombreUsuario = '" + nombreUsuario + "' ORDER BY fechaValor DESC LIMIT 0,10" );
 		
 		
 		//Conexion.setRs(Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'"));
-		Conexion.cerrar();
+		
+		return nom.getString(1) ;
 		
 	}
 
