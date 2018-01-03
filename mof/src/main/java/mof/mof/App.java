@@ -9,9 +9,7 @@ public class App
     public static void main( String[] args )
     
     {
-    
-    	Comentario c = new Comentario();
-    	c.comentar();
+    Comentario.comentar();
     	
     }
 }

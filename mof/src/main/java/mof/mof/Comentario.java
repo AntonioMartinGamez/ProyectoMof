@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Comentario {
 	Scanner sc = new Scanner(System.in);
 	
-	public void comentar(){
+	public static void comentar(){
 		Conexion.conectar();
 		
 		try {
@@ -19,7 +19,7 @@ public class Comentario {
 
 	}
 	
-	public void valorar(){
+	public static void valorar(){
 		Conexion.conectar();
 		
 		try {
@@ -32,7 +32,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void contestar(){
+	public static void contestar(){
 		Conexion.conectar();
 		
 		try {
@@ -45,7 +45,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void modificarComent(){
+	public static void modificarComent(){
 		Conexion.conectar();
 		
 		try {
@@ -60,7 +60,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void modificarValor(){
+	public static void modificarValor(){
 		Conexion.conectar();
 		
 		try {
@@ -73,7 +73,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void borrar(){
+	public static void borrar(){
 		Conexion.conectar();
 		
 		try {
@@ -86,7 +86,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void borrarComentario(){
+	public static void borrarComentario(){
 		Conexion.conectar();
 		
 		try {
@@ -99,7 +99,7 @@ public class Comentario {
 		Conexion.cerrar();
 	}
 	
-	public void borrarValoracion(){
+	public static void borrarValoracion(){
 		Conexion.conectar();
 		
 		try {

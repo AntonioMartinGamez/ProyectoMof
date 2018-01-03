@@ -90,33 +90,7 @@ public class Restaurante {
 	//Metodo Responder a un comentario
 	public void responder(){
 		
-		/*Conexion.conectar();
-		
-		try {
-		
-			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
-			
-
-			
-		} catch (SQLException e){
-			
-			System.out.println("Erro al conectar con la base de datos mof");
-			
-		}
-		try {
-			
-			while (Conexion.getRs().next()) {
-				
-				System.out.println(Conexion.getRs().getString(1));
-				
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		Conexion.cerrar();
-		*/
+		Comentario.contestar();
 		
 	}
 }

@@ -16,11 +16,17 @@ public class Usuario {
 
 	
 	public void registrar() throws SQLException {
+		Conexion.conectar();
+		
 		Conexion.getSt().execute("INSERT INTO usuario (nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto) VALUES ('" + nombreUsuario + "', '" + nombre + "', '" + apellidos + "', '" + telefono + "', '" + email + "', '"+ edad + "', '" + sexo + "', '" + password + "', '" + fechaNac + "', '" + comAuton + "', '" + provincia + "', '" + localidad + "', '" + foto + "')");
+	
+		Conexion.cerrar();
+		
 	}
 	
 	public void modificar() throws SQLException {
-				
+		Conexion.conectar();
+		
 		ResultSet nom = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		ResultSet app = Conexion.getSt().executeQuery("Select apellido from usuario where nombreUsuario = '" + nombreUsuario + "'");
 		ResultSet tlf = Conexion.getSt().executeQuery("Select telefono from usuario where nombreUsuario = '" + nombreUsuario + "'");
@@ -36,24 +42,38 @@ public class Usuario {
 		
 				
 		Conexion.getSt().execute("UPDATE SET nombre= '" + nom + "', apellidos = '" + app + "', telefono = '" + tlf + "', email = '" + eml + "' , edad = '" + ed + "', sexo = '" + sex + "', password =  '" + pas + "', fechaNac =  '" + fec + "', comAuton = '" + com + "', provincia = '" + pro + "', localidad = '" + loc + "', foto = '" + img + "' WHERE nombreUsuario =  '" + nombreUsuario + "'");
-				
+		
+		Conexion.cerrar();
+		
 	}
 	
 	public void borrar() throws SQLException{
+		Conexion.conectar();
+		
 		Conexion.getSt().execute("DELETE * FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'");
+		
+		Conexion.cerrar();
 	}
 	
 	public void comentar() throws SQLException{
+		
+		Comentario.comentar();
 		
 	}
 	
 	public void valorar(){
 		
+		Comentario.valorar();
+		
 	}
 	
 	public void mostUsuario() throws SQLException{
+		Conexion.conectar();
+		
 		Conexion.setRs(Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'"));
+	
+		Conexion.cerrar();
+		
 	}
-	//asdfh
 
 }
