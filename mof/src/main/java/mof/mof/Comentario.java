@@ -24,7 +24,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al valorar");
 		}
@@ -37,7 +37,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("INSERT INTO respuesta ( idComentario, texto ) VALUES (" + "idComentario" + ", " + "texto" + " )");
+			Conexion.getSt().execute("INSERT INTO respuesta ( idComentario, texto ) VALUES (" + Conexion.getRs().getString(1) + ", " + "texto" + " )");
 		} catch (SQLException e){
 			System.out.println("Error al contestar");
 		}
@@ -50,7 +50,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET comentario = " + "comentario" + " WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("UPDATE comentarios SET comentario = " + "comentario" + " WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al modificar el comentario");
 		}
@@ -65,7 +65,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al modificar la valoracion");
 		}
@@ -78,7 +78,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("DELETE * FROM comentarios WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("DELETE * FROM comentarios WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al borrar todo");
 		}
@@ -91,7 +91,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("DELETE comentario FROM comentarios WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("DELETE comentario FROM comentarios WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al borrar el comentario");
 		}
@@ -104,7 +104,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("DELETE valoracion FROM comentarios WHERE idComentario = " + "idComentario");
+			Conexion.getSt().execute("DELETE valoracion FROM comentarios WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al borrar la valoracion");
 		}
