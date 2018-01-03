@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Restaurante {
 	
 	
-	private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
+	private String idRest, nombre, email, descripcion, propietario, comida, url, localizacion, foto;
 	private int fijo, movil, precMedio;
 	
 	
@@ -24,23 +24,23 @@ public class Restaurante {
 	//Metodo Modificar Restaurante
 	public void modificar() throws SQLException{
 		
-	/*	ResultSet nombre = Conexion.getSt().executeQuery("Select nombre from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet fijo = Conexion.getSt().executeQuery("Select fijo from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet movil = Conexion.getSt().executeQuery("Select movil from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet email = Conexion.getSt().executeQuery("Select email from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet descripcion = Conexion.getSt().executeQuery("Select descripcion from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet propietario = Conexion.getSt().executeQuery("Select sexo from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet comida = Conexion.getSt().executeQuery("Select password from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet url = Conexion.getSt().executeQuery("Select fechaNac from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet localizacion = Conexion.getSt().executeQuery("Select comAuton from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet precMedio = Conexion.getSt().executeQuery("Select provincia from usuario where nombreUsuario = '" + nombreUsuario + "'");
-		ResultSet foto = Conexion.getSt().executeQuery("Select localidad from usuario where nombreUsuario = '" + nombreUsuario + "'");
+		ResultSet nombre = Conexion.getSt().executeQuery("Select nombre from restaurante where idRest = '" + idRest + "'");
+		ResultSet fijo = Conexion.getSt().executeQuery("Select fijo from restaurante where idRest = '" + idRest + "'");
+		ResultSet movil = Conexion.getSt().executeQuery("Select movil from restaurante where idRest = '" + idRest + "'");
+		ResultSet email = Conexion.getSt().executeQuery("Select email from restaurante where idRest = '" + idRest + "'");
+		ResultSet descripcion = Conexion.getSt().executeQuery("Select descripcion from restaurante where idRest = '" + idRest + "'");
+		ResultSet propietario = Conexion.getSt().executeQuery("Select propietario from restaurante where idRest = '" + idRest + "'");
+		ResultSet comida = Conexion.getSt().executeQuery("Select comida from restaurante where idRest = '" + idRest + "'");
+		ResultSet url = Conexion.getSt().executeQuery("Select url from restaurante where idRest = '" + idRest + "'");
+		ResultSet localizacion = Conexion.getSt().executeQuery("Select localizacion from restaurante where idRest = '" + idRest + "'");
+		ResultSet precMedio = Conexion.getSt().executeQuery("Select precMedio from restaurante where idRest = '" + idRest + "'");
+		ResultSet foto = Conexion.getSt().executeQuery("Select foto from restaurante where idRest = '" + idRest + "'");
 		
 				
 		Conexion.getSt().execute("UPDATE SET "
-				+ "nombre= '" + nom + "', apellidos = '" + app + "', telefono = '" + tlf + "', email = '" + eml + "' , edad = '" + ed + "', sexo = '" + sex + "', password =  '" + pas + "', fechaNac =  '" + fec + "', comAuton = '" + com + "', provincia = '" + pro + "', localidad = '" + loc + "', foto = '" + img + "' "
-						+ "WHERE nombreUsuario =  '" + nombreUsuario + "'");
-						*/
+				+ "nombre= '" + nombre + "', fijo = '" + fijo + "', movil = '" + movil + "', email = '" + email + "' , descripcion = '" + descripcion + "', propietario = '" + propietario + "', comida =  '" + comida + "', url =  '" + url + "', localizacion = '" + localizacion + "', precMedio = '" + precMedio + "', foto = '" + foto + "' "
+						+ "WHERE idRest =  '" + idRest + "'");
+						
 	}
 	
 	
