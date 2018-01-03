@@ -65,6 +65,7 @@ public class Restaurante {
 	//Metodo Mostrar Restaurantes (fotos, 10 ultimos comentarios, media valoraciones, etc)
 	public void mostRest() throws SQLException{
 		
+		
 		Conexion.conectar();
 
 		ResultSet nombre = Conexion.getSt().executeQuery("Select nombre from restaurante where idRest = '" + idRest + "'");
@@ -79,10 +80,14 @@ public class Restaurante {
 		ResultSet precMedio = Conexion.getSt().executeQuery("Select precMedio from restaurante where idRest = '" + idRest + "'");
 		ResultSet foto = Conexion.getSt().executeQuery("Select foto from restaurante where idRest = '" + idRest + "'");
 		
+		ResultSet mediavalor = Conexion.getSt().executeQuery("SELECT AVG(comentarios.valoracion) from comentarios inner join restaurante on comentarios.idRest = restaurante.idRest; ");
+		
+		ResultSet ultcomen = Conexion.getSt().executeQuery("SELECT usuario.nombreUsuario, comentarios.comentario from ((comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) inner join usuario on comentarios.idUsuario = usuario.idUsuario) GROUP BY comentarios.fechaComent DESC LIMIT 10;");
+		
 		Conexion.getSt().execute("SELECT "
 				+ "nombre= '" + nombre + "', fijo = '" + fijo + "', movil = '" + movil + "', email = '" + email + "' , descripcion = '" + descripcion + "', propietario = '" + propietario + "', comida =  '" + comida + "', url =  '" + url + "', localizacion = '" + localizacion + "', precMedio = '" + precMedio + "', foto = '" + foto + "' "
 						+ "WHERE idRest =  '" + idRest + "'");
-		Conexion.getSt().executeQuery("SELECT AVG(comentarios.valoracion) from comentarios inner join restaurante on comentarios.idRest = restaurante.idRest; ");
+		
 
 		Conexion.cerrar();
 		
