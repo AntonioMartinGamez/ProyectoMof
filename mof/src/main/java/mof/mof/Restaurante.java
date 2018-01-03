@@ -38,6 +38,8 @@ public class Restaurante {
 			e.printStackTrace();
 		}
 		
+		Conexion.cerrar();
+		
 	}
 	
 	
@@ -68,6 +70,8 @@ public class Restaurante {
 			
 			e.printStackTrace();
 		}
+		
+		Conexion.cerrar();
 		*/
 	}
 	
@@ -99,6 +103,8 @@ public class Restaurante {
 			
 			e.printStackTrace();
 		}
+		
+		Conexion.cerrar();
 		*/
 		
 	}
@@ -131,6 +137,8 @@ public class Restaurante {
 			
 			e.printStackTrace();
 		}
+		
+		Conexion.cerrar();
 		*/
 		
 	}
@@ -163,6 +171,8 @@ public class Restaurante {
 			
 			e.printStackTrace();
 		}
+		
+		Conexion.cerrar();
 		*/
 		
 	}
