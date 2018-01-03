@@ -1,11 +1,9 @@
 package mof.mof;
 
 import java.sql.SQLException;
-import java.util.Scanner;
+
 
 public class Restaurante {
-	Scanner sc = new Scanner(System.in);
-	
 	
 	
 	private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
@@ -18,8 +16,6 @@ public class Restaurante {
 		Conexion.getSt().execute("INSERT INTO restaurante "
 				+ "(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
 				+ "VALUES ('" + nombre + "', '" + fijo + "', '" + movil + "', '"+ email + "', '" + descripcion + "', '" + propietario + "', '" + comida + "', '" + url + "', '" + localizacion + "', '" + precMedio + "', '" + foto + "')");
-		
-		Conexion.cerrar();
 		
 	}
 	
