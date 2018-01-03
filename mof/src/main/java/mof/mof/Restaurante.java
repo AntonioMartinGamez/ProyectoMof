@@ -63,33 +63,26 @@ public class Restaurante {
 	
 	
 	//Metodo Mostrar Restaurantes (fotos, 10 ultimas valoraciones, etc)
-	public void mostRest(){
+	public void mostRest() throws SQLException{
 		
 		Conexion.conectar();
-		/*
-		try {
-		
-			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
-			
 
-			
-		} catch (SQLException e){
-			
-			System.out.println("Erro al conectar con la base de datos mof");
-			
-		}
-		try {
-			
-			while (Conexion.getRs().next()) {
-				
-				System.out.println(Conexion.getRs().getString(1));
-				
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		*/
+		ResultSet nombre = Conexion.getSt().executeQuery("Select nombre from restaurante where idRest = '" + idRest + "'");
+		ResultSet fijo = Conexion.getSt().executeQuery("Select fijo from restaurante where idRest = '" + idRest + "'");
+		ResultSet movil = Conexion.getSt().executeQuery("Select movil from restaurante where idRest = '" + idRest + "'");
+		ResultSet email = Conexion.getSt().executeQuery("Select email from restaurante where idRest = '" + idRest + "'");
+		ResultSet descripcion = Conexion.getSt().executeQuery("Select descripcion from restaurante where idRest = '" + idRest + "'");
+		ResultSet propietario = Conexion.getSt().executeQuery("Select propietario from restaurante where idRest = '" + idRest + "'");
+		ResultSet comida = Conexion.getSt().executeQuery("Select comida from restaurante where idRest = '" + idRest + "'");
+		ResultSet url = Conexion.getSt().executeQuery("Select url from restaurante where idRest = '" + idRest + "'");
+		ResultSet localizacion = Conexion.getSt().executeQuery("Select localizacion from restaurante where idRest = '" + idRest + "'");
+		ResultSet precMedio = Conexion.getSt().executeQuery("Select precMedio from restaurante where idRest = '" + idRest + "'");
+		ResultSet foto = Conexion.getSt().executeQuery("Select foto from restaurante where idRest = '" + idRest + "'");
+		
+		Conexion.getSt().execute("SELECT "
+				+ "nombre= '" + nombre + "', fijo = '" + fijo + "', movil = '" + movil + "', email = '" + email + "' , descripcion = '" + descripcion + "', propietario = '" + propietario + "', comida =  '" + comida + "', url =  '" + url + "', localizacion = '" + localizacion + "', precMedio = '" + precMedio + "', foto = '" + foto + "' "
+						+ "WHERE idRest =  '" + idRest + "'");
+
 		Conexion.cerrar();
 		
 		
