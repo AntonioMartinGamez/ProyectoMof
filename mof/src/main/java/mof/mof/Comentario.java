@@ -1,83 +1,115 @@
 package mof.mof;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class Comentario {
 	Scanner sc = new Scanner(System.in);
-	/*private Statement st;
-	private ResultSet rs;
-	
-	Connection con = null;
-	Properties props = new Properties();
-	Statement st;
-	
-	public void conectar(){
-		props.put("user", "ismael");
-		props.put("password", "Perro20");
-		
-		try {
-			con = DriverManager.getConnection("jdbc:mysql://192.168.1.41:3306/mof", props);
-			st = con.createStatement();
-		} catch (SQLException e){
-			System.out.println("Erro al conectar con la base de datos mof");
-		}
-	}*/
 	
 	public void comentar(){
 		Conexion.conectar();
 		
 		try {
-			//Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "comentario" + " )");
-			
-			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
-			
-			//rs = st.executeQuery("SHOW TABLES");
-			
+			Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, idComentario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "idComentario" + ", " + "comentario" + " )");
 		} catch (SQLException e){
-			System.out.println("Erro al conectar con la base de datos mof");
+			System.out.println("Error al insertar el comentario");
 		}
-		try {
-			while (Conexion.getRs().next()) {
-				System.out.println(Conexion.getRs().getString(1));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		
+		Conexion.cerrar();
+
 	}
 	
 	public void valorar(){
-		//conectar();
+		Conexion.conectar();
 		
-		/*try {
-			st.execute("INSERT INTO comentarios ( valoracion ) VALUES (" + "valoracion" + " )");
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + "idComentario");
 		} catch (SQLException e){
-			System.out.println("Erro al conectar con la base de datos mof");
-		}*/
+			System.out.println("Error al valorar");
+		}
+		
+		Conexion.cerrar();
 	}
 	
 	public void contestar(){
+		Conexion.conectar();
 		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("INSERT INTO respuesta ( idComentario, texto ) VALUES (" + "idComentario" + ", " + "texto" + " )");
+		} catch (SQLException e){
+			System.out.println("Error al contestar");
+		}
+		
+		Conexion.cerrar();
 	}
 	
 	public void modificarComent(){
+		Conexion.conectar();
 		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("UPDATE comentarios SET comentario = " + "comentario" + " WHERE idComentario = " + "idComentario");
+		} catch (SQLException e){
+			System.out.println("Error al modificar el comentario");
+		}
+		
+		
+		
+		Conexion.cerrar();
 	}
 	
 	public void modificarValor(){
+		Conexion.conectar();
 		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + "idComentario");
+		} catch (SQLException e){
+			System.out.println("Error al modificar la valoracion");
+		}
+		
+		Conexion.cerrar();
 	}
 	
 	public void borrar(){
+		Conexion.conectar();
 		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("DELETE * FROM comentarios WHERE idComentario = " + "idComentario");
+		} catch (SQLException e){
+			System.out.println("Error al borrar todo");
+		}
+		
+		Conexion.cerrar();
+	}
+	
+	public void borrarComentario(){
+		Conexion.conectar();
+		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("DELETE comentario FROM comentarios WHERE idComentario = " + "idComentario");
+		} catch (SQLException e){
+			System.out.println("Error al borrar el comentario");
+		}
+		
+		Conexion.cerrar();
+	}
+	
+	public void borrarValoracion(){
+		Conexion.conectar();
+		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("DELETE valoracion FROM comentarios WHERE idComentario = " + "idComentario");
+		} catch (SQLException e){
+			System.out.println("Error al borrar la valoracion");
+		}
+		
+		Conexion.cerrar();
 	}
 	
 }

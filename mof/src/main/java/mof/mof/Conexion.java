@@ -26,6 +26,17 @@ public class Conexion {
 		}
 	}
 	
+	public static void cerrar() {
+		try {
+			rs.close();
+			st.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Error al cerrar");
+		}
+		
+	}
+	
 	public static Connection getCon() {
 		return con;
 	}
