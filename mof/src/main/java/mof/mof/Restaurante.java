@@ -8,35 +8,16 @@ public class Restaurante {
 	
 	
 	
-	//private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
-	//private int fijo, movil, precMedio;
+	private String nombre, email, descripcion, propietario, comida, url, localizacion, foto;
+	private int fijo, movil, precMedio;
 	
 	
 	//Metodo Registrar Restaurante
-	public void registro(){
+	public void registro() throws SQLException{
 		
-		Conexion.conectar();
-		
-		try {
-			
-			Conexion.setRs(Conexion.getSt().executeQuery("SHOW TABLES"));
-			
-		} catch (SQLException e){
-			
-			System.out.println("Erro al conectar con la base de datos mof");
-			
-		}
-		try {
-			
-			while (Conexion.getRs().next()) {
-				
-				System.out.println(Conexion.getRs().getString(1));
-				
-			}
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
+		Conexion.getSt().execute("INSERT INTO restaurante "
+				+ "(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
+				+ "VALUES ('" + nombre + "', '" + fijo + "', '" + movil + "', '"+ email + "', '" + descripcion + "', '" + propietario + "', '" + comida + "', '" + url + "', '" + localizacion + "', '" + precMedio + "', '" + foto + "')");
 		
 		Conexion.cerrar();
 		
