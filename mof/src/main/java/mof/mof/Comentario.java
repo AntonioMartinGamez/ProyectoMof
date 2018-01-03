@@ -1,16 +1,17 @@
 package mof.mof;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Comentario {
 	Scanner sc = new Scanner(System.in);
+	static LocalDate ahora = LocalDate.now();
 	
 	public static void comentar(){
 		Conexion.conectar();
-		
 		try {
-			Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, idComentario, comentairo ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "idComentario" + ", " + "comentario" + " )");
+			Conexion.getSt().execute("INSERT INTO comentarios ( idRest, idUsuario, idComentario, comentairo, fechaComent ) VALUES (" + "idRest" + ", " + "idUsuario" + ", " + "idComentario" + ", " + "comentario" + ", " + ahora + " )");
 		} catch (SQLException e){
 			System.out.println("Error al insertar el comentario");
 		}
@@ -24,7 +25,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + Conexion.getRs().getString(1));
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + ", fechaValor = " + ahora + " WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al valorar");
 		}
@@ -37,7 +38,7 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("INSERT INTO respuesta ( idComentario, texto ) VALUES (" + Conexion.getRs().getString(1) + ", " + "texto" + " )");
+			Conexion.getSt().execute("INSERT INTO respuesta ( idComentario, texto, fechaRespuesta ) VALUES (" + Conexion.getRs().getString(1) + ", " + "texto" + ", " + ahora + " )");
 		} catch (SQLException e){
 			System.out.println("Error al contestar");
 		}
@@ -50,12 +51,10 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET comentario = " + "comentario" + " WHERE idComentario = " + Conexion.getRs().getString(1));
+			Conexion.getSt().execute("UPDATE comentarios SET comentario = " + "comentario" + ", fechaComent = " + ahora + " WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al modificar el comentario");
 		}
-		
-		
 		
 		Conexion.cerrar();
 	}
@@ -65,9 +64,22 @@ public class Comentario {
 		
 		try {
 			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
-			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + " WHERE idComentario = " + Conexion.getRs().getString(1));
+			Conexion.getSt().execute("UPDATE comentarios SET valoracion = " + "valoracion" + ", fechaValor = " + ahora + "  WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al modificar la valoracion");
+		}
+		
+		Conexion.cerrar();
+	}
+	
+	public static void modificarRespuesta(){
+		Conexion.conectar();
+		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM comentarios WHERE comentario = " + "comentario"));
+			Conexion.getSt().execute("UPDATE comentarios SET texto = " + "texto" + ", fechaRespuesta = " + ahora + "  WHERE idComentario = " + Conexion.getRs().getString(1));
+		} catch (SQLException e){
+			System.out.println("Error al modificar la respuesta");
 		}
 		
 		Conexion.cerrar();
@@ -107,6 +119,19 @@ public class Comentario {
 			Conexion.getSt().execute("DELETE valoracion FROM comentarios WHERE idComentario = " + Conexion.getRs().getString(1));
 		} catch (SQLException e){
 			System.out.println("Error al borrar la valoracion");
+		}
+		
+		Conexion.cerrar();
+	}
+	
+	public static void borrarRespuesta(){
+		Conexion.conectar();
+		
+		try {
+			Conexion.setRs(Conexion.getSt().executeQuery("SELECT idComentario FROM respuesta WHERE texto = " + "texto"));
+			Conexion.getSt().execute("DELETE * FROM respuesta WHERE idComentario = " + Conexion.getRs().getString(1));
+		} catch (SQLException e){
+			System.out.println("Error al borrar la respuesta");
 		}
 		
 		Conexion.cerrar();
