@@ -3,7 +3,7 @@ package mof.mof;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Properties;
+
 
 
 public class Usuario {
