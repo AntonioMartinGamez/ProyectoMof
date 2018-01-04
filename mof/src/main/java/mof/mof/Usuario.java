@@ -14,6 +14,29 @@ public class Usuario {
 	
 	ResultSet consulta;
 	
+	public Usuario() {
+		
+	}
+
+	public Usuario(String nombreUsuario, String nombre, String apellidos, String email, String password,
+			String comAuton, String provincia, String localidad, String foto, String sexo, int telefono, int edad,
+			Date fechaNac) {
+	
+		this.nombreUsuario = nombreUsuario;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.password = password;
+		this.comAuton = comAuton;
+		this.provincia = provincia;
+		this.localidad = localidad;
+		this.foto = foto;
+		this.sexo = sexo;
+		this.telefono = telefono;
+		this.edad = edad;
+		this.fechaNac = fechaNac;
+	}
+	
 	public void registrar() throws SQLException {
 		Conexion.conectar();
 		
@@ -47,31 +70,6 @@ public class Usuario {
 		Conexion.cerrar();
 		
 	}
-	
-	
-	public Usuario() {
-	
-	}
-
-	public Usuario(String nombreUsuario, String nombre, String apellidos, String email, String password,
-			String comAuton, String provincia, String localidad, String foto, String sexo, int telefono, int edad,
-			Date fechaNac) {
-	
-		this.nombreUsuario = nombreUsuario;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.password = password;
-		this.comAuton = comAuton;
-		this.provincia = provincia;
-		this.localidad = localidad;
-		this.foto = foto;
-		this.sexo = sexo;
-		this.telefono = telefono;
-		this.edad = edad;
-		this.fechaNac = fechaNac;
-	}
-
 	public void borrar() throws SQLException{
 		Conexion.conectar();
 		
@@ -100,5 +98,7 @@ public class Usuario {
 		return consulta ;
 
 	}
+
+	
 
 }
