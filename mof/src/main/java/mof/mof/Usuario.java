@@ -98,6 +98,31 @@ public class Usuario {
 		return consulta ;
 
 	}
+	
+	public Usuario devUsuario(String userName) throws SQLException {
+		Conexion.conectar();
+		
+		consulta = Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad FROM usuario WHERE nombreUsuario = '" + userName + "'");
+		
+		nombreUsuario = consulta.getString(1);
+		nombre = consulta.getString(2);
+		apellidos = consulta.getString(3);
+		telefono = consulta.getInt(4);
+		email = consulta.getString(5);
+		edad = consulta.getInt(6);
+		sexo = consulta.getString(7);
+		password = consulta.getString(8);
+		fechaNac = consulta.getDate(9);
+		comAuton = consulta.getString(10);
+		provincia = consulta.getString(11);
+		localidad = consulta.getString(12);
+		foto = consulta.getString(13);
+		
+		Usuario user = new Usuario(nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo, telefono, edad, fechaNac);
+		
+		return user;
+		
+	}
 
 	public static boolean login(String nombreUsuario, String pass){
 		String sql = "SELECT password FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'";
@@ -125,6 +150,119 @@ public class Usuario {
 		return login_correcto;
 	}
 	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getComAuton() {
+		return comAuton;
+	}
+
+	public void setComAuton(String comAuton) {
+		this.comAuton = comAuton;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+
+	public ResultSet getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(ResultSet consulta) {
+		this.consulta = consulta;
+	}
+	
 	
 
 }
