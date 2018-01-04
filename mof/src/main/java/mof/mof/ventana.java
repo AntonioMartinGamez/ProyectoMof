@@ -2,6 +2,7 @@ package mof.mof;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -61,13 +62,15 @@ public class ventana extends JFrame implements ActionListener {
         
         // adicionamos los componentes a la ventana
         Usuario u1 = new Usuario();
+        ResultSet user = u1.mostUsuario();
+        user.next();
         
-        
-        mostUser.setText(u1.mostUsuario());
+        mostUser.setText(user.getString(1));
         mostUser.setBounds(100, 100, 100, 100);
         text2.setText("Master of Food");
         text2.setBounds(10, 10, 100, 25);
         
+        this.add(mostUser);
         this.add(text2);
         this.add(texto);
         this.add(caja);
