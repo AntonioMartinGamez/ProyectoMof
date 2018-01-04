@@ -88,13 +88,13 @@ public class Busqueda {
 			 	
 
 					
-		return listausuarios;
 		 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
        }finally {
     	   Conexion.cerrar();
-       } 
+       } 		return listausuarios;
+
 			 }
 
 	
