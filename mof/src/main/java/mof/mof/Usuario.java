@@ -99,6 +99,32 @@ public class Usuario {
 
 	}
 
+	public static boolean login(String nombreUsuario, String pass){
+		String sql = "SELECT password FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'";
+		boolean login_correcto = false;
+		String password = "";
+		
+		
+		/*    Connection conn = bd.getConnection();
+	          Statement stmt  = conn.createStatement();
+			  PreparedStatement pstmt = conn.prepareStatement(sql)*/
+		
+		 try{
+			 Conexion.conectar();
+			 Conexion.setRs(Conexion.getSt().executeQuery(sql));
+			 	 Conexion.getRs().next();
+				 password = Conexion.getRs().getString("password");
+				 if(pass.equals(password)){
+					 login_correcto = true;
+			 }
+			 
+		 } catch (SQLException e) {
+			 
+		 } finally {
+			// Conexion.cerrar();	        }
+		return login_correcto;
+	}
+	}
 	
 
 }
