@@ -1,8 +1,8 @@
 package mof.mof;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 
 
@@ -10,7 +10,7 @@ public class Usuario {
 	
 	private String nombreUsuario,nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
 	private int telefono, edad;
-	LocalDate fechaNac;
+	Date fechaNac;
 	
 	ResultSet consulta;
 	
@@ -23,19 +23,26 @@ public class Usuario {
 		
 	}
 
-
-
-
-
-
 	public void modificar() throws SQLException {
 		Conexion.conectar();
 		
 		consulta = Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto FROM usuario WHERE nombreUsuario = '" + nombreUsuario + "'");
 		consulta.next();
 		
-				
-		Conexion.getSt().execute("UPDATE SET nombre= '" + consulta.getString(2) + "', apellidos = '" + consulta.getString(3) + "', telefono = '" + consulta.getInt(4) + "', email = '" + consulta.getString(5) + "' , edad = '" + consulta.getInt(6) + "', sexo = '" + consulta.getString(7) + "', password =  '" + consulta.getString(8) + "', fechaNac =  '" + consulta.getDate(9) + "', comAuton = '" + consulta.getString(10) + "', provincia = '" + consulta.getString(11) + "', localidad = '" + consulta.getString(12) + "', foto = '" + consulta.getString(13) + "' WHERE nombreUsuario =  '" + nombreUsuario + "'");
+		nombre = consulta.getString(2);
+		apellidos = consulta.getString(3);
+		telefono = consulta.getInt(4);
+		email = consulta.getString(5);
+		edad = consulta.getInt(6);
+		sexo = consulta.getString(7);
+		password = consulta.getString(8);
+		fechaNac = consulta.getDate(9);
+		comAuton = consulta.getString(10);
+		provincia = consulta.getString(11);
+		localidad = consulta.getString(12);
+		foto = consulta.getString(13);
+		
+		Conexion.getSt().execute("UPDATE SET nombre= '" + nombre + "', apellidos = '" + apellidos + "', telefono = '" + telefono + "', email = '" + email + "' , edad = '" + edad + "', sexo = '" + sexo + "', password =  '" + password + "', fechaNac =  '" + fechaNac + "', comAuton = '" + comAuton + "', provincia = '" + provincia + "', localidad = '" + localidad + "', foto = '" + foto + "' WHERE nombreUsuario =  '" + nombreUsuario + "'");
 		
 		Conexion.cerrar();
 		
@@ -48,7 +55,7 @@ public class Usuario {
 
 	public Usuario(String nombreUsuario, String nombre, String apellidos, String email, String password,
 			String comAuton, String provincia, String localidad, String foto, String sexo, int telefono, int edad,
-			LocalDate fechaNac) {
+			Date fechaNac) {
 	
 		this.nombreUsuario = nombreUsuario;
 		this.nombre = nombre;
@@ -64,11 +71,6 @@ public class Usuario {
 		this.edad = edad;
 		this.fechaNac = fechaNac;
 	}
-
-
-
-
-
 
 	public void borrar() throws SQLException{
 		Conexion.conectar();

@@ -82,7 +82,7 @@ public class Busqueda {
 		            	foto = Conexion.getRs().getString("foto");  
 		            	
 		            	
-			      		Usuario usuario = new Usuario(nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo, telefono, edad, fechaNac);
+			      		Usuario usuario = new Usuario(nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo, telefono, edad, fechaNacDate);
 			      		listausuarios.add(usuario);
 		            }
 			 	
