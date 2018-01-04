@@ -97,7 +97,7 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
 					 System.out.print("si se ha podido loggear ");
 					 
 					 	//Usuario usuarioLogeado = Usuario.getUsuarioBynombreUsuario(nombreUsuario);
-					 	new vistas.mostrarUsuario().setVisible(true);
+					 	new vistas.mostrarUsuario(nombreUsuario).setVisible(true);
 					 
 					 
 				}else{

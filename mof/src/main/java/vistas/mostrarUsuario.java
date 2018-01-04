@@ -31,9 +31,7 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel texto;           // etiqueta o texto no editable
-	
-	private JLabel nombreUsuarioLabel;           // etiqueta o texto no editable
-	private JLabel passUsuarioLabel;           // etiqueta o texto no editable
+
     
 	private JLabel nombreUsuario;
 	private JLabel nombre;
@@ -47,23 +45,16 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
 	private JLabel provincia;
 	private JLabel localidad;
 	
-	private String userName, name,surName,correo,sex,comAut,provi,local,dateString = "";
+	private String userName, name, surName, correo, sex, comAut, provi, local, dateString, gUser = "";
 	private int tel,age = 0;
-	private Date date = null;
 	
 	
 	
 	private JButton botonReturn;          // boton con una determinada accion
 
-
-
-    private JTextField nombreUsuarioText;        // caja de texto, para insertar datos
-    private JTextField passUsuarioText;        // caja de texto, para insertar datos
-
-    private JButton botonEmpresa;          // boton con una determinada accion
-
-    public mostrarUsuario() {
+    public mostrarUsuario(String gUser) {
         super();                    // usamos el contructor de la clase padre JFrame
+        this.gUser = gUser;
         inicializarComponentes();   // inicializamos los atributos o componentes
     }
 
@@ -73,7 +64,7 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
     	Usuario user = new Usuario();
     	ResultSet us;
 		try {
-			us = user.mostUsuario("usuarioChorra");
+			us = user.mostUsuario(this.gUser);
 	    	us.next();
 	    	userName = us.getString(1);
 	    	name = us.getString(2);
@@ -82,8 +73,7 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
 	    	correo = us.getString(5);
 	    	age = us.getShort(6);
 	    	sex = us.getString(7);
-	    	date = us.getDate(8);
-	    	dateString = date.toString();
+	    	dateString = us.getString(8);
 	    	comAut = us.getString(9);
 	    	provi = us.getString(10);
 	    	local = us.getString(11);
@@ -120,38 +110,28 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
     	 
     	 //Configuramos posicion
     	 
-    	 nombreUsuario.setBounds(250, 50, 600, 30);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
-    	 nombre.setBounds(250, 100, 600, 30); 
-    	 apellido.setBounds(250, 150, 600, 30);
-    	 telefono.setBounds(250, 200, 600, 30);
-    	 email.setBounds(250, 250, 600, 30);
-    	 edad.setBounds(250, 300, 600, 30);
-    	 sexo.setBounds(250, 350, 600, 30);
-    	 fechaNac.setBounds(250, 400, 600, 30);
-    	 comAuton.setBounds(250, 450, 600, 30);
-    	 provincia.setBounds(250, 500, 600, 30);
-    	 localidad.setBounds(250, 550, 600, 30);
+    	 nombreUsuario.setBounds(250, 100, 600, 30);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
+    	 nombre.setBounds(250, 150, 600, 30); 
+    	 apellido.setBounds(250, 200, 600, 30);
+    	 telefono.setBounds(250, 250, 600, 30);
+    	 email.setBounds(250, 300, 600, 30);
+    	 edad.setBounds(250, 350, 600, 30);
+    	 sexo.setBounds(250, 400, 600, 30);
+    	 fechaNac.setBounds(250, 450, 600, 30);
+    	 comAuton.setBounds(250, 500, 600, 30);
+    	 provincia.setBounds(250, 550, 600, 30);
+    	 localidad.setBounds(250, 600, 600, 30);
 
 
         texto = new JLabel();
-        nombreUsuarioLabel = new JLabel();
-        passUsuarioLabel = new JLabel();
 
         texto.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 33));        //caja = new JTextField();
-        botonEmpresa = new JButton();
-        nombreUsuarioText = new JTextField();
-        passUsuarioText = new JTextField();
         botonReturn = new JButton();
 
         // configuramos los componentes
         
         texto.setText("Mostar Usuario");    // colocamos un texto a la etiqueta
         texto.setBounds(250, 50, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
-
-        nombreUsuarioLabel.setText("Nombre de usuario");    // colocamos un texto a la etiqueta
-        nombreUsuarioLabel.setBounds(250, 150, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
-        passUsuarioLabel.setText("Contraseña");    // colocamos un texto a la etiqueta
-        passUsuarioLabel.setBounds(250, 250, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
 
         botonReturn.setText("Return"); 		    // colocamos un texto al boton
         botonReturn.setBounds(20, 20, 80, 80);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
@@ -166,43 +146,12 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
         });       
 
         
-        
-        nombreUsuarioText.setBounds(400, 150, 150, 50);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
-        passUsuarioText.setBounds(400, 250, 150, 50);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
-        botonEmpresa.setText("Entrar"); 		    // colocamos un texto al boton
-        botonEmpresa.setBounds(375, 350, 200, 100);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
-        botonEmpresa.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				String nombreUsuario = nombreUsuarioText.getText();
-				String pass = passUsuarioText.getText();
-				
-				if(Usuario.login(nombreUsuario, pass)){
-					 System.out.print("si se ha podido loggear ");
-					 
-					 	//Usuario usuarioLogeado = Usuario.getUsuarioBynombreUsuario(nombreUsuario);
-					 	//añadir nueva vista  new Vistas.MapaFrame(usuarioLogeado).setVisible(true);
-					 
-					 
-				}else{
-					setVisible(true);
-
-					
-					 System.out.print("no se ha podido loggear"); //muestra que no logea
-				} 
-
-			}
-        });       // hacemos que el boton tenga una accion y esa accion estara en esta clase
+              // hacemos que el boton tenga una accion y esa accion estara en esta clase
         
         
         
         // adicionamos los componentes a la ventana
         this.add(texto);
-        this.add(nombreUsuarioText);
-        this.add(passUsuarioText);
-        this.add(nombreUsuarioLabel);
-        this.add(passUsuarioLabel);
         this.add(botonReturn);
 
         
@@ -219,8 +168,6 @@ public class mostrarUsuario extends FrameBase2 implements ActionListener {
         this.add(comAuton);
         this.add(provincia);
         this.add(localidad);
-        
-        this.add(botonEmpresa);
 
     }
 
