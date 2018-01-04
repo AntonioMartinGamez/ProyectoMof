@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class Usuario {
 	
-	private String nombreUsuario = "usuarioChorra",nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
+	private String nombreUsuario,nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo;
 	private int telefono, edad;
 	LocalDate fechaNac;
 	
