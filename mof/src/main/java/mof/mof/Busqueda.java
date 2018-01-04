@@ -80,7 +80,9 @@ public class Busqueda {
 		            	provincia = Conexion.getRs().getString("provincia");
 		            	localidad = Conexion.getRs().getString("localidad");
 		            	foto = Conexion.getRs().getString("foto");  
-			      		Usuario usuario = new Usuario(nombreUsuario,nombre,apellidos,telefono,email,edad,sexo,password,fechaNac,comAuton,provincia,localidad,foto);
+		            	
+		            	
+			      		Usuario usuario = new Usuario(nombreUsuario, nombre, apellidos, email, password, comAuton, provincia, localidad, foto, sexo, telefono, edad, fechaNac);
 			      		listausuarios.add(usuario);
 		            }
 			 	
