@@ -37,7 +37,7 @@ public class Usuario {
 		this.fechaNac = fechaNac;
 	}
 	
-	public void registrar(String nombreUsuario, String nombre, String apellidos, int telefono, String email, int edad, String sexo, String password, Date fechaNac, String comAuton, String provincia, String localidad, String foto) throws SQLException {
+	public static void registrar(String nombreUsuario, String nombre, String apellidos, int telefono, String email, int edad, String sexo, String password, Date fechaNac, String comAuton, String provincia, String localidad, String foto) throws SQLException {
 		Conexion.conectar();
 		
 		Conexion.getSt().execute("INSERT INTO usuario (nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, password, fechaNac, comAuton, provincia, localidad, foto) VALUES ('" + nombreUsuario + "', '" + nombre + "', '" + apellidos + "', '" + telefono + "', '" + email + "', '"+ edad + "', '" + sexo + "', '" + password + "', '" + fechaNac + "', '" + comAuton + "', '" + provincia + "', '" + localidad + "', '" + foto + "')");
