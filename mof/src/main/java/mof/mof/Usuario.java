@@ -94,7 +94,8 @@ public class Usuario {
 		Conexion.conectar();
 		
 		consulta = Conexion.getSt().executeQuery("SELECT nombreUsuario, nombre, apellidos, telefono, email, edad, sexo, fechaNac, comAuton, provincia, localidad, foto, (SELECT valoracion FROM comentarios INNER JOIN usuario ON usuario.idUsuario = comentarios.idUsuario LIMIT 0,10) AS comments FROM usuario WHERE nombreUsuario = '" + userName + "'");
-
+		
+		
 		return consulta ;
 
 	}
