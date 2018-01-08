@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +28,7 @@ public class primeraVista extends FrameBase2 implements ActionListener {
     private JTextField caja;        // caja de texto, para insertar datos
     private JButton botonEmpresa;          // boton con una determinada accion
     private JButton botonUsuario;          // boton con una determinada accion
+    private JButton botonRegistrar;          // boton con una determinada accion
 
     public primeraVista() {
         super();                    // usamos el contructor de la clase padre JFrame
@@ -40,6 +42,9 @@ public class primeraVista extends FrameBase2 implements ActionListener {
         texto.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 33));        //caja = new JTextField();
         botonEmpresa = new JButton();
         botonUsuario = new JButton();
+        
+        botonRegistrar = new JButton();
+        
         // configuramos los componentes
         texto.setText("Eres una Empresa o un Usuario?");    // colocamos un texto a la etiqueta
         texto.setBounds(250, 50, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
@@ -53,6 +58,23 @@ public class primeraVista extends FrameBase2 implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				
 			 	new vistas.eresEmpresa().setVisible(true);
+				setVisible(false);
+
+			}
+        });       // hacemos que el boton tenga una accion y esa accion estara en esta clase
+        
+        botonRegistrar.setText("Registar"); 		    // colocamos un texto al boton
+        botonRegistrar.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 50));        //caja = new JTextField();
+        botonRegistrar.setBounds(75, 184, 50, 50);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
+        botonRegistrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+			 	try {
+					new mof.mof.ventana().setVisible(true);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				setVisible(false);
 
 			}
@@ -77,6 +99,7 @@ public class primeraVista extends FrameBase2 implements ActionListener {
         //this.add(caja);
         this.add(botonEmpresa);
         this.add(botonUsuario);
+        this.add(botonRegistrar);
 
     }
 
