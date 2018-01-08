@@ -34,7 +34,7 @@ public class Restaurante {
 		}
 	
 	//Metodo Registrar Restaurante
-	public void registro(String nombre, int fijo, int movil, String email, String descripcion, String propietario, String comida, String url, String localizacion, int precMedio, String foto) throws SQLException{
+	public static void registro(String nombre, int fijo, int movil, String email, String descripcion, String propietario, String comida, String url, String localizacion, int precMedio, String foto) throws SQLException{
 		
 		Conexion.conectar();
 		
