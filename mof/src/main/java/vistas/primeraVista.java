@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -67,13 +68,26 @@ public class primeraVista extends FrameBase2 implements ActionListener {
         botonRegistrar.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 13));        //caja = new JTextField();
         botonRegistrar.setBounds(20, 20, 100, 50);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
         botonRegistrar.addActionListener(new ActionListener() {
+			private AbstractButton check1;
+			private AbstractButton check2;
+
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				String msg = null;
+		        check1 = null;
+				check2 = null;
 				
 			 	try {
 					new mof.mof.Registrar().setVisible(true);
-				} catch (SQLException e) {
-					e.printStackTrace();
+					while(msg == null) {
+						if (check1.isSelected()) {
+				        	msg = "H";
+				        }else if(check2.isSelected()) {
+				        	msg = "M";
+				        }
+			        }
+				} catch (SQLException e1) {
+					e1.printStackTrace();
 				}
 				setVisible(false);
 
