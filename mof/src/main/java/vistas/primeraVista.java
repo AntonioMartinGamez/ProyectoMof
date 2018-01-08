@@ -79,13 +79,7 @@ public class primeraVista extends FrameBase2 implements ActionListener {
 				
 			 	try {
 					new mof.mof.Registrar().setVisible(true);
-					while(msg == null) {
-						if (check1.isSelected()) {
-				        	msg = "H";
-				        }else if(check2.isSelected()) {
-				        	msg = "M";
-				        }
-			        }
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

@@ -252,9 +252,18 @@ public class Registrar extends JFrame implements ActionListener {
         }
     }*/
     
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	 while(msg == null) {
+ 			if (check1.isSelected()) {
+ 	        	msg = "H";
+ 	        }else if(check2.isSelected()) {
+ 	        	msg = "M";
+ 	        }
+         }
     	// obtenemos el contenido de la caja de texto
     	String nombreUsuario = caja.getText(); 
         String nombre = cnombre.getText();
@@ -269,8 +278,6 @@ public class Registrar extends JFrame implements ActionListener {
         int telefono = Integer.parseInt(ctelefono.getText());
         Date fec = Date.valueOf(LocalDate.now());
         String sexo = msg;
-        
-       
         
         try {
 			Usuario.registrar(nombreUsuario, nombre, apellido, telefono, email, edad, sexo, pass ,fec , comAuton, provincia, localidad, foto);
