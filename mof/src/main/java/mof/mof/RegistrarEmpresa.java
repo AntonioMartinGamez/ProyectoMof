@@ -2,9 +2,7 @@ package mof.mof;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
 
 /**
  * Clase Ventana
@@ -25,37 +22,42 @@ import javax.swing.event.ChangeEvent;
  * accion de mostrar el texto en la caja por una ventana de mensaje.
  * @author Daniel Alvarez (a3dany)
  */
-public class Registrar extends JFrame implements ActionListener {
+public class RegistrarEmpresa extends JFrame implements ActionListener {
 
 	/**
+	 * 
+	 * "INSERT INTO restaurante "
+				+ "(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
+			
+		
+	 * 
+	 * 
 	 */
 	private static final long serialVersionUID = -974237888149158577L;
-	private JLabel texto;           // etiqueta o texto no editable
-	private JLabel nombre;
-	private JLabel apellidos;
+	private JLabel nombre;           // etiqueta o texto no editable
+	private JLabel fijo;
+	private JLabel movil;
 	private JLabel email;
-	private JLabel pass;
-	private JLabel comAuton;
-	private JLabel provincia;
-	private JLabel localidad;
+	private JLabel descripcion;
+	private JLabel propietario;
+	private JLabel comida;
+	private JLabel url;
+	private JLabel localizacion;
+	private JLabel precMedio;
 	private JLabel foto;
-	private JLabel sex;
-	private JLabel telefono;
-    private JLabel edad;
-	private JLabel fechaNac;
+	
+
 	private JTextField caja;        // caja de texto, para insertar datos
     private JTextField cnombre;
 	private JTextField capellidos;
 	private JTextField cemail;
 	private JTextField cpass;
-	
 	private JTextField ccomAuton;        // caja de texto, para insertar datos
     private JTextField cprovincia;
 	private JTextField clocalidad;
 	private JTextField cfoto;
 	private JTextField ctelefono;
     private JTextField cedad;
-	private JTextField cfechaNac;
 	
     private JButton boton;          // boton con una determinada accion
     private JLabel text2;
@@ -65,7 +67,7 @@ public class Registrar extends JFrame implements ActionListener {
     public static String msg;
     
     
-    public Registrar() throws SQLException {
+    public RegistrarEmpresa() throws SQLException {
         super();                    // usamos el contructor de la clase padre JFrame
         configurarVentana();        // configuramos la ventana
         inicializarComponentes();   // inicializamos los atributos o componentes
@@ -82,19 +84,17 @@ public class Registrar extends JFrame implements ActionListener {
 
     private void inicializarComponentes() throws SQLException {
         // creamos los componentes
-        texto = new JLabel();
         nombre = new JLabel();
-    	apellidos = new JLabel();
+        fijo = new JLabel();
+    	movil = new JLabel();
     	email = new JLabel();
-    	pass = new JLabel();
-    	sex = new JLabel();
-        comAuton = new JLabel();
-        provincia = new JLabel();
-        localidad = new JLabel();
-        foto = new JLabel();
-    	telefono = new JLabel();
-    	edad = new JLabel();
-    	fechaNac = new JLabel();    	
+    	descripcion = new JLabel();
+    	propietario = new JLabel();
+        comida = new JLabel();
+        url = new JLabel();
+        localizacion = new JLabel();
+        precMedio = new JLabel();
+    	foto = new JLabel();  	
 
     	
     	// ----------------------------------
@@ -109,48 +109,37 @@ public class Registrar extends JFrame implements ActionListener {
         cfoto = new JTextField();
     	ctelefono = new JTextField();
     	cedad = new JTextField();
-    	cfechaNac = new JTextField();
     	// ----------------------------------
-        boton = new JButton();
-        text2 = new JLabel();
-        String hom = "H";
-        String muj = "M";
-        
-        check1=new JRadioButton(hom);
-        check2=new JRadioButton(muj);
-        //check1.setSelected(true);
         
         
         
         
         // configuramos los componentes
-        texto.setText("Nombre de usuario");    // colocamos un texto a la etiqueta
-        texto.setBounds(31, 50, 160, 25);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
-        nombre.setText("Nombre");    
-        nombre.setBounds(31, 90, 100, 25);
-        apellidos.setText("Apellidos");    
-        apellidos.setBounds(31, 130, 100, 25);
+        //"(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
+        nombre.setText("Nombre de Empresa");    // colocamos un texto a la etiqueta
+        nombre.setBounds(31, 50, 160, 25);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
+        fijo.setText("Telefono Fijo");    
+        fijo.setBounds(31, 90, 100, 25);
+        movil.setText("Telefono Movil");    
+        movil.setBounds(31, 130, 100, 25);
         email.setText("Email");    
         email.setBounds(31, 170, 100, 25);
-        pass.setText("Contraseña");    
-        pass.setBounds(31, 210, 100, 25);
-        sex.setText("Sexo");    
-        sex.setBounds(31, 250, 100, 25);
-        comAuton.setText("Comunidad Autonoma");    
-        comAuton.setBounds(31, 290, 160, 25);
-        provincia.setText("Provincia");    
-        provincia.setBounds(31, 330, 100, 25);
-        localidad.setText("Localidad");
-        localidad.setBounds(31, 370, 100, 25);
+        descripcion.setText("Descripcion");    
+        descripcion.setBounds(31, 210, 100, 25);
+        propietario.setText("Propietario");    
+        propietario.setBounds(31, 250, 100, 25);
+        comida.setText("Comida");    
+        comida.setBounds(31, 290, 160, 25);
+        url.setText("URL");    
+        url.setBounds(31, 330, 100, 25);
+        localizacion.setText("Localizacion");
+        localizacion.setBounds(31, 370, 100, 25);
+        precMedio.setText("Precio Medio");    
+        precMedio.setBounds(31, 410, 100, 25);
         foto.setText("Foto");    
-        foto.setBounds(31, 410, 100, 25);
-        telefono.setText("Telefono");    
-        telefono.setBounds(31, 450, 100, 25);
-        edad.setText("Edad");    
-        edad.setBounds(31, 490, 100, 25);
-        
-        fechaNac.setText("Fecha de Nacimiento");    
-        fechaNac.setBounds(31, 530, 160, 25);
+        foto.setBounds(31, 450, 100, 25);
+
+
         
         
         
@@ -165,8 +154,7 @@ public class Registrar extends JFrame implements ActionListener {
         clocalidad.setBounds(180, 370, 200, 25);
         cfoto.setBounds(180, 410, 200, 25);  
         ctelefono.setBounds(180, 450, 200, 25);
-        cedad.setBounds(180, 490, 200, 25);   
-        cfechaNac.setBounds(180, 530, 200, 25);
+        cedad.setBounds(180, 490, 200, 25);
         
   
         
@@ -189,19 +177,18 @@ public class Registrar extends JFrame implements ActionListener {
         
       
         
-        
+        //"(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto) "
         this.add(nombre);
-        this.add(apellidos);
+        this.add(fijo);
+        this.add(movil);
         this.add(email);
-        this.add(pass);
-        this.add(sex);
-        this.add(comAuton);
-        this.add(provincia);
-        this.add(localidad);
+        this.add(descripcion);
+        this.add(propietario);
+        this.add(comida);
+        this.add(url);
+        this.add(localizacion);
+        this.add(precMedio);
         this.add(foto);
-        this.add(telefono);
-        this.add(edad);
-        this.add(fechaNac);
 
         
         this.add(ccomAuton);
@@ -210,17 +197,13 @@ public class Registrar extends JFrame implements ActionListener {
         this.add(cfoto);
         this.add(ctelefono);
         this.add(cedad);
-        this.add(cfechaNac);
         this.add(cnombre);
         this.add(capellidos);
         this.add(cemail);
         this.add(cpass);
         this.add(text2);
-        this.add(texto);
         this.add(caja);
         this.add(boton);
-        this.add(check1);
-        this.add(check2);
         
         
       //etiResultado.setText(mensaje);
@@ -256,24 +239,23 @@ public class Registrar extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     	// obtenemos el contenido de la caja de texto
-    	String nombreUsuario = caja.getText(); 
-        String nombre = cnombre.getText();
-        String apellido = capellidos.getText();
+    	String nombre = caja.getText(); 
+        int fijo = Integer.parseInt(cnombre.getText());
+        int movil = Integer.parseInt(capellidos.getText());
         String email = cemail.getText();
-        String pass = cpass.getText();
-        String comAuton = ccomAuton.getText();
-        String provincia = cprovincia.getText();
-        String localidad = clocalidad.getText();
-        String foto = cfoto.getText();
-        int edad = Integer.parseInt(cedad.getText());
-        int telefono = Integer.parseInt(ctelefono.getText());
-        Date fec = Date.valueOf(LocalDate.now());
-        String sexo = msg;
+        String descripcion = cpass.getText();
+        String propietario = ccomAuton.getText();
+        String comida = cprovincia.getText();
+        String url = clocalidad.getText();
+        String localizacion = cfoto.getText();
+        int precMedio = Integer.parseInt(cedad.getText());
+        String foto = ctelefono.getText();
         
        
         
         try {
-			Usuario.registrar(nombreUsuario, nombre, apellido, telefono, email, edad, sexo, pass ,fec , comAuton, provincia, localidad, foto);
+        	Restaurante.registro(nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto);
+			//Usuario.registrar(nombreUsuario, nombre, apellido, telefono, email, edad, sexo, pass ,fec , comAuton, provincia, localidad, foto);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -291,12 +273,5 @@ public class Registrar extends JFrame implements ActionListener {
     public static void main(String[] args) throws SQLException {
         Registrar V = new Registrar();      // creamos una ventana
         V.setVisible(true);             // hacemos visible la ventana creada
-        while(msg == null) {
-	        if (check1.isSelected()) {
-	        	msg = "H";
-	        }else if(check2.isSelected()) {
-	        	msg = "M";
-	        }
-        }
     }
 }
