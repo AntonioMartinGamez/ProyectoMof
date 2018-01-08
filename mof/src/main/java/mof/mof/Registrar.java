@@ -191,7 +191,7 @@ public class Registrar extends JFrame implements ActionListener {
         group.add(check2);
         check1.setBounds(180,247,40,30);
         check2.setBounds(240,247,40,30);
-        text2.setText(msg);  //"Master of Food"
+        text2.setText("Master of Food");  //"Master of Food"
         text2.setBounds(10, 10, 100, 25);
         
       
