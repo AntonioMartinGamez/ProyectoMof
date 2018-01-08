@@ -41,13 +41,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- * JMonthChooser is a bean for choosing a month.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 159 $
- * @version $LastChangedDate: 2011-06-22 21:07:24 +0200 (Mi, 22 Jun 2011) $
- */
+
 public class JMonthChooser extends JPanel implements ItemListener,
 		ChangeListener {
 	private static final long serialVersionUID = -2028361332231218527L;

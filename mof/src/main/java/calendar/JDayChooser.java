@@ -46,13 +46,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-/**
- * JDayChooser is a bean for choosing a day.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 147 $
- * @version $LastChangedDate: 2011-06-06 20:36:53 +0200 (Mo, 06 Jun 2011) $
- */
+
 public class JDayChooser extends JPanel implements ActionListener, KeyListener,
 		FocusListener {
 	private static final long serialVersionUID = 5876398337018781820L;

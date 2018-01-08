@@ -20,7 +20,7 @@
  */
 package calendar;
 
-import com.toedter.components.GenericBeanInfo;
+import calendar.components.*;
 
 
 /**

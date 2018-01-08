@@ -15,13 +15,8 @@ import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- * JSpinnerDateEditor is a date editor based on a JSpinner.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 147 $
- * @version $LastChangedDate: 2011-06-06 20:36:53 +0200 (Mo, 06 Jun 2011) $
- */
+
+
 public class JSpinnerDateEditor extends JSpinner implements IDateEditor,
 		FocusListener, ChangeListener {
 

@@ -23,15 +23,7 @@ package calendar;
 import java.awt.Color;
 import java.util.Date;
 
-/**
- * Implementations of this interface can be added to various JCalendar
- * components to check if certain dates are valid for selection.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 142 $
- * @version $LastChangedDate: 2011-06-05 07:06:03 +0200 (So, 05 Jun 2011) $
- * 
- */
+
 public interface IDateEvaluator {
 	/**
 	 * Checks if a date is a special date (might have different colors and tooltips)

@@ -42,17 +42,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.text.MaskFormatter;
 
-/**
- * JTextFieldDateEditor is the default editor used by JDateChooser. It is a
- * formatted text field, that colores valid dates green/black and invalid dates
- * red. The date format patten and mask can be set manually. If not set, the
- * MEDIUM pattern of a SimpleDateFormat with regards to the actual locale is
- * used.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 97 $
- * @version $LastChangedDate: 2006-05-24 17:30:41 +0200 (Mi, 24 Mai 2006) $
- */
+
 public class JTextFieldDateEditor extends JFormattedTextField implements IDateEditor,
 		CaretListener, FocusListener, ActionListener {
 

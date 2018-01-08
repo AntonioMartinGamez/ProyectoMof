@@ -26,15 +26,7 @@ import java.util.Locale;
 
 import javax.swing.JComponent;
 
-/**
- * All date editors that should be used by a JDateChooser have to implement this
- * interface.
- * 
- * @author Kai Toedter
- * @version $LastChangedRevision: 142 $
- * @version $LastChangedDate: 2011-06-05 07:06:03 +0200 (So, 05 Jun 2011) $
- * 
- */
+
 public interface IDateEditor {
 
 	/**
