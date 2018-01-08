@@ -235,7 +235,7 @@ public class Registrar extends JFrame implements ActionListener {
         while(check1.isSelected()== true) {
         	check2.setSelected(false);
       
-     
+     //fgggh
        if(check1.isSelected()==true) {
             check2.setSelected(false);
        }else if (check2.isSelected()==true) {
