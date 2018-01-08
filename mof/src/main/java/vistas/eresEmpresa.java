@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -30,13 +31,13 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel texto;           // etiqueta o texto no editable
 	
-	private JLabel nombreUsuarioLabel;           // etiqueta o texto no editable
-	private JLabel passUsuarioLabel;           // etiqueta o texto no editable
+	private JLabel emailRestauranteLabel;           // etiqueta o texto no editable
+	private JLabel passRestauranteLabel;           // etiqueta o texto no editable
     private JButton botonReturn;          // boton con una determinada accion
 
 
 
-    private JTextField nombreUsuarioText;        // caja de texto, para insertar datos
+    private JTextField emailRestauranteText;        // caja de texto, para insertar datos
     private JTextField passUsuarioText;        // caja de texto, para insertar datos
 
     private JButton botonEmpresa;          // boton con una determinada accion
@@ -50,23 +51,23 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
     private void inicializarComponentes() {
         // creamos los componentes
         texto = new JLabel();
-        nombreUsuarioLabel = new JLabel();
-        passUsuarioLabel = new JLabel();
+        emailRestauranteLabel = new JLabel();
+        passRestauranteLabel = new JLabel();
 
         texto.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 33));        //caja = new JTextField();
         botonEmpresa = new JButton();
-        nombreUsuarioText = new JTextField();
-        passUsuarioText = new JTextField();
+        emailRestauranteText = new JTextField();
+        passUsuarioText = new JPasswordField();
         botonReturn = new JButton();
 
         // configuramos los componentes
         texto.setText("Logueate como empresa");    // colocamos un texto a la etiqueta
         texto.setBounds(250, 50, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
 
-        nombreUsuarioLabel.setText("Nombre de usuario");    // colocamos un texto a la etiqueta
-        nombreUsuarioLabel.setBounds(250, 150, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
-        passUsuarioLabel.setText("Contraseña");    // colocamos un texto a la etiqueta
-        passUsuarioLabel.setBounds(250, 250, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
+        emailRestauranteLabel.setText("Email de Restaurante");    // colocamos un texto a la etiqueta
+        emailRestauranteLabel.setBounds(250, 150, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
+        passRestauranteLabel.setText("Contraseña");    // colocamos un texto a la etiqueta
+        passRestauranteLabel.setBounds(250, 250, 600, 50);   // colocamos posicion y tamanio al texto (x, y, ancho, alto)
 
         botonReturn.setText("Return"); 		    // colocamos un texto al boton
         botonReturn.setBounds(20, 20, 80, 80);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
@@ -82,7 +83,7 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
 
         
         
-        nombreUsuarioText.setBounds(400, 150, 150, 50);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
+        emailRestauranteText.setBounds(400, 150, 150, 50);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
         passUsuarioText.setBounds(400, 250, 150, 50);   // colocamos posicion y tamanio a la caja (x, y, ancho, alto)
         botonEmpresa.setText("Entrar"); 		    // colocamos un texto al boton
         botonEmpresa.setBounds(375, 350, 200, 100);  // colocamos posicion y tamanio al boton (x, y, ancho, alto)
@@ -90,14 +91,14 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String nombreUsuario = nombreUsuarioText.getText();
+				String emailRestaurante = emailRestauranteText.getText();
 				String pass = passUsuarioText.getText();
 				
-				if(Usuario.login(nombreUsuario, pass)){
+				if(Restaurante.login(emailRestaurante, pass)){
 					 System.out.print("si se ha podido loggear ");
 					 
 					 	//Usuario usuarioLogeado = Usuario.getUsuarioBynombreUsuario(nombreUsuario);
-					 	new vistas.mostrarUsuario(nombreUsuario).setVisible(true);
+					 	new vistas.mostrarEmpresa(emailRestaurante).setVisible(true);
 					 
 					 
 				}else{
@@ -114,10 +115,10 @@ public class eresEmpresa extends FrameBase2 implements ActionListener {
         
         // adicionamos los componentes a la ventana
         this.add(texto);
-        this.add(nombreUsuarioText);
+        this.add(emailRestauranteText);
         this.add(passUsuarioText);
-        this.add(nombreUsuarioLabel);
-        this.add(passUsuarioLabel);
+        this.add(emailRestauranteLabel);
+        this.add(passRestauranteLabel);
         this.add(botonReturn);
 
         this.add(botonEmpresa);

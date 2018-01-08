@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import mof.mof.Usuario;
@@ -57,7 +58,7 @@ public class eresUsuario extends FrameBase2 implements ActionListener {
         texto.setFont(new Font(texto.getFont().getName(), texto.getFont().getStyle(), 33));        //caja = new JTextField();
         botonEmpresa = new JButton();
         nombreUsuarioText = new JTextField();
-        passUsuarioText = new JTextField();
+        passUsuarioText = new JPasswordField();
         botonReturn = new JButton();
 
         // configuramos los componentes

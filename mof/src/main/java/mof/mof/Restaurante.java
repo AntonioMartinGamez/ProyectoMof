@@ -87,12 +87,12 @@ public class Restaurante {
 	
 	
 	//Metodo Mostrar Restaurantes (fotos, 10 ultimos comentarios, media valoraciones, etc)
-	public ResultSet mostRest() throws SQLException{
+	public ResultSet mostRest(String eRest) throws SQLException{
 		
 		
 		Conexion.conectar();
 		
-		consulta = Conexion.getSt().executeQuery("SELECT nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto, (SELECT AVG(comentarios.valoracion) from comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) as MedValor, (SELECT usuario.nombreUsuario from ((comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) inner join usuario on comentarios.idUsuario = usuario.idUsuario) GROUP BY comentarios.fechaComent DESC LIMIT 10) as Users, (SELECT comentarios.comentario from ((comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) inner join usuario on comentarios.idUsuario = usuario.idUsuario) GROUP BY comentarios.fechaComent DESC LIMIT 10) as Comentario FROM restaurante WHERE email = '" + email + "'");		
+		consulta = Conexion.getSt().executeQuery("SELECT nombre, fijo, movil, email, descripcion, propietario, comida, url, localizacion, precMedio, foto, (SELECT AVG(comentarios.valoracion) from comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) as MedValor, (SELECT usuario.nombreUsuario from ((comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) inner join usuario on comentarios.idUsuario = usuario.idUsuario) GROUP BY comentarios.fechaComent DESC LIMIT 10) as Users, (SELECT comentarios.comentario from ((comentarios inner join restaurante on comentarios.idRest = restaurante.idRest) inner join usuario on comentarios.idUsuario = usuario.idUsuario) GROUP BY comentarios.fechaComent DESC LIMIT 10) as Comentario FROM restaurante WHERE email = '" + eRest + "'");		
 
 		return consulta;
 		
@@ -106,4 +106,30 @@ public class Restaurante {
 		
 	}
 	
-}
+	public static boolean login(String emailRestaurante, String pass){
+		String sql = "SELECT password FROM restaurante WHERE email = '" + emailRestaurante + "'";
+		boolean login_correcto = false;
+		String password = "";
+		
+		
+		/*    Connection conn = bd.getConnection();
+	          Statement stmt  = conn.createStatement();
+			  PreparedStatement pstmt = conn.prepareStatement(sql)*/
+		
+		 try{
+			 Conexion.conectar();
+			 Conexion.setRs(Conexion.getSt().executeQuery(sql));
+			 	 Conexion.getRs().next();
+				 password = Conexion.getRs().getString("password");
+				 if(pass.equals(password)){
+					 login_correcto = true;
+			 }
+			 
+		 } catch (SQLException e) {
+			 
+		 }
+		return login_correcto;
+	}
+	}
+	
+
